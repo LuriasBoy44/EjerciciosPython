@@ -1,14 +1,22 @@
+from io import open
+
 class Fibonacci():
     def __init__(self):
-        self.__sec1,self.__sec2= 0,1
+        self.__sec1,self.__sec2= 0,1        
 
     def ejecutaSecuencia(self,n):
         while self.__sec1 < n:
            # print(f'\t{a}',end='\n')
-            print('\t',self.__sec1 , self.points(self.__sec1), end='\n')        
-            self.sumaValores()
-            self.__sec1,self.__sec2 = self.__sec2, (self.__sec1+self.__sec2)
+           print('\t',self.__sec1 , end='\n')   
+           # print('\t',self.__sec1 , self.points(self.__sec1), end='\n')     
+           # self.sumaValores()
+           self.guardaValores(self.__sec1)
+           self.__sec1,self.__sec2 = self.__sec2, (self.__sec1+self.__sec2)
 
+    def guardaValores(self, dato):
+        archivo_texto=open("ArchivoDeTexto.txt","a")
+        archivo_texto.write(str(dato)+'\n')
+        archivo_texto.close()
 
     def sumaValores(self):
         res=0
@@ -28,4 +36,5 @@ class Fibonacci():
             return x
         else:
             return ''
+
 
